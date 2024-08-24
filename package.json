@@ -1,0 +1,36 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "bun --filter '*' dev ",
+    "lint": "bun --filter '*' lint",
+    "lint:fix": "bun --filter '*' lint:fix",
+    "format": "bun --filter '*' format",
+    "build": "bun --filter 'frontend' build",
+    "db:generate": "bun --filter '@yasumu/api' db:generate",
+    "db:migrate": "bun --filter '@yasumu/api' db:migrate",
+    "db:seed": "bun --filter '@yasumu/api' db:seed",
+    "db:studio": "bun --filter '@yasumu/api' db:studio",
+    "db:status": "bun --filter '@yasumu/api' db:status",
+    "clean": "rm bun.lockb && rm -rf node_modules && bun install",
+    "postinstall": "husky"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "bun": "^1.1.25"
+  },
+  "dependencies": {
+    "husky": "^9.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "bun --filter '*' lint:fix && bun --filter '*' format"
+    }
+  }
+}

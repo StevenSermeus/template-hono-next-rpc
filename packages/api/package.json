@@ -1,0 +1,37 @@
+{
+  "name": "@yasumu/api",
+  "version": "1.0.0",
+  "private": false,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed --preview-feature",
+    "db:studio": "prisma studio",
+    "db:status": "prisma migrate status"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.2.2",
+    "@prisma/client": "5.18.0",
+    "@t3-oss/env-core": "^0.11.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "hono": "^4.5.7",
+    "prisma": "^5.18.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^22.4.2",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  }
+}

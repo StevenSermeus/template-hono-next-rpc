@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "lint": "exit 0",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@yasumu/api": "^*",
+    "hono": "^4.5.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
