@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "start": "bun run src/index.ts",
     "lint": "exit 0",
     "format": "prettier --write ."
   },

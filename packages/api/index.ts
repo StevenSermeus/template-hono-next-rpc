@@ -13,6 +13,7 @@ import { ipRestriction } from 'hono/ip-restriction';
 import { getConnInfo } from 'hono/bun';
 import { env } from './src/config/env';
 
+app.use(timeout(500));
 app.use(
   '*',
   cors({
@@ -31,9 +32,9 @@ app.use(
 );
 
 app.use(logger());
-app.use(timeout(500));
 
 app.use('*', registerMetrics);
+
 app.get(
   '/metrics',
   ipRestriction(getConnInfo, {
