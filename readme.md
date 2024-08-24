@@ -30,3 +30,7 @@
 2. Run `bun install`
 3. Run `bun dev`
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Caveats
+
+- Hono is running outside of Next.js, it's possible but it's not the goal of this project

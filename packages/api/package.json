@@ -1,7 +1,6 @@
 {
   "name": "@yasumu/api",
   "version": "1.0.0",
-  "private": false,
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
