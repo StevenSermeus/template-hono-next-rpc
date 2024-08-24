@@ -25,9 +25,8 @@ app.use(
 
 app.use(
   secureHeaders({
-    strictTransportSecurity: 'max-age=63072000; includeSubDomains; preload',
-    xFrameOptions: 'DENY',
-    xXssProtection: '1',
+    xFrameOptions: true,
+    xXssProtection: true,
   })
 );
 
