@@ -6,8 +6,11 @@ import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { showRoutes } from 'hono/dev';
 import type { VariablesHono } from './src/config/variables';
-
+import { timeout } from 'hono/timeout';
+import { printMetrics, registerMetrics } from './src/config/prometheus';
 const app = new Hono<{ Variables: VariablesHono }>();
+import { ipRestriction } from 'hono/ip-restriction';
+import { getConnInfo } from 'hono/bun';
 
 app.use(
   '*',
@@ -30,6 +33,17 @@ app.use(
 );
 
 app.use(logger());
+app.use(timeout(500));
+
+app.use('*', registerMetrics);
+app.get(
+  '/metrics',
+  ipRestriction(getConnInfo, {
+    denyList: [],
+    allowList: ['127.0.0.1', '::1'],
+  }),
+  printMetrics
+);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const route = app.route('/user/auth', authApp);

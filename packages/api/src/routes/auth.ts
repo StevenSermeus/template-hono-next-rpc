@@ -8,6 +8,7 @@ import { env } from '../config/env';
 import { protectedRoute } from '../middleware/auth';
 import type { VariablesHono } from '../config/variables';
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
+import { BlackListedTokenCounter } from '../config/prometheus';
 
 export const authRoutes = new Hono<{ Variables: VariablesHono }>();
 
@@ -153,6 +154,7 @@ export const authApp = authRoutes
     if (refreshToken === undefined || accessToken === undefined) {
       return c.json({ message: 'Logged out' });
     }
+    BlackListedTokenCounter.inc();
     deleteCookie(c, 'access_token');
     deleteCookie(c, 'refresh_token');
     await prisma.blacklist.createMany({

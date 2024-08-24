@@ -21,8 +21,13 @@
   - Using bun workspace for the monorepo setup
 
 - Fast
+
   - Bun run for hono is super duper fast
   - Monorepo commands are fast thanks to bun workspace
+  - Timeout if request is longer than 500ms
+
+- Monitoring friendly
+  - API route /metrics for monitoring
 
 ## Getting started
 
