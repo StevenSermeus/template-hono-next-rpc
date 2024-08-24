@@ -14,7 +14,7 @@ export const env = createEnv({
     COOKIE_SECRET: z.string(),
     REFRESH_TOKEN_EXPIRES_DAYS: z.coerce.number().default(7),
     ACCESS_TOKEN_EXPIRES_MINUTES: z.coerce.number().default(15),
-    API_URL: z.string().url().default('http://localhost:3000'),
+    WEBSITE_URL: z.string().url().default('http://localhost:3000'),
   },
   runtimeEnv: process.env,
 });

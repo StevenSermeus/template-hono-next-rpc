@@ -11,15 +11,14 @@ import { printMetrics, registerMetrics } from './src/config/prometheus';
 const app = new Hono<{ Variables: VariablesHono }>();
 import { ipRestriction } from 'hono/ip-restriction';
 import { getConnInfo } from 'hono/bun';
+import { env } from './src/config/env';
 
 app.use(
   '*',
   cors({
-    origin: 'http://localhost:3000', // Allowed origin
+    origin: env.WEBSITE_URL, // Allowed origin
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-    allowHeaders: ['Content-Type', 'Authorization', 'X-Refresh-Token'], // Allowed HTTP headers
     maxAge: 86400,
-    exposeHeaders: ['X-Access-Token', 'X-Refresh-Token', 'Set-Cookie'],
     credentials: true,
   })
 );
