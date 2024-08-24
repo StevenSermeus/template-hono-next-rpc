@@ -16,7 +16,8 @@
     "db:studio": "bun --filter '@yasumu/api' db:studio",
     "db:status": "bun --filter '@yasumu/api' db:status",
     "clean": "rm bun.lockb && rm -rf node_modules && bun install",
-    "postinstall": "husky"
+    "postinstall": "husky init",
+    "prepare": "husky"
   },
   "workspaces": [
     "packages/*",
