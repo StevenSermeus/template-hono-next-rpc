@@ -28,10 +28,5 @@
   },
   "dependencies": {
     "husky": "^9.1.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "bun --filter '*' lint:fix && bun --filter '*' format"
-    }
   }
 }
