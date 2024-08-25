@@ -1,5 +1,7 @@
 import * as bcrypt from 'bcrypt';
+
 import { env } from '../config/env';
+
 export function hash(password: string): [string, Error | null] {
   try {
     const salt = bcrypt.genSaltSync(env.SALT_ROUNDS);

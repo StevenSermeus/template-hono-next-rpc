@@ -1,8 +1,13 @@
 'use client';
+
 import React, { useState } from 'react';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { api } from '@/api';
+
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+
 import { InferResponseType } from 'hono/client';
+
+import { api } from '@/api';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -22,7 +27,7 @@ const AuthContext = React.createContext<SuccessfulResponseType>({
   },
 });
 
-export default function AuthProvider({ children }: AuthProviderProps) {
+function AuthProviderInner({ children }: AuthProviderProps) {
   const query = useSuspenseQuery({
     queryKey: ['auth', 'me'],
     queryFn: async () => {
@@ -44,3 +49,27 @@ export const useAuth = () => {
   }
   return context;
 };
+
+export function AuthError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  return (
+    <div>
+      <h1>Authentication Error</h1>
+      <p>{error.message}</p>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+
+export default function AuthProvider({ children }: AuthProviderProps) {
+  return (
+    <ErrorBoundary errorComponent={AuthError}>
+      <AuthProviderInner>{children}</AuthProviderInner>
+    </ErrorBoundary>
+  );
+}

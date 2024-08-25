@@ -1,5 +1,6 @@
 import React from 'react';
-import Ripple from './magicui/ripple';
+
+import Ripple from '@/components/magicui/ripple';
 
 export default function LoadingPage() {
   return (

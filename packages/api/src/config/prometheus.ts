@@ -1,6 +1,8 @@
-import { prometheus } from '@hono/prometheus';
-const { printMetrics, registerMetrics } = prometheus();
 import { Counter, Registry } from 'prom-client';
+
+import { prometheus } from '@hono/prometheus';
+
+const { printMetrics, registerMetrics } = prometheus();
 
 const registry = new Registry();
 const BlackListedTokenCounter = new Counter({

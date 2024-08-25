@@ -1,6 +1,8 @@
 'use client';
-import { useAuth } from '@/providers/auth';
+
 import React from 'react';
+
+import { useAuth } from '@/providers/auth';
 
 export default function Page() {
   const auth = useAuth();

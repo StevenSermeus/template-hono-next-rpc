@@ -1,8 +1,9 @@
-import { createMiddleware } from 'hono/factory';
-import { verify, sign } from 'hono/jwt';
-import { env } from '../config/env';
-import { JwtTokenExpired } from 'hono/utils/jwt/types';
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
+import { createMiddleware } from 'hono/factory';
+import { sign, verify } from 'hono/jwt';
+import { JwtTokenExpired } from 'hono/utils/jwt/types';
+
+import { env } from '../config/env';
 import prisma from '../libs/prisma';
 
 export const protectedRoute = createMiddleware(async (c, next) => {

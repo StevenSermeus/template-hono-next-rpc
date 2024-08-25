@@ -1,14 +1,17 @@
 import { Hono } from 'hono';
-import { zValidator } from '@hono/zod-validator';
-import { z } from 'zod';
-import { sign } from 'hono/jwt';
-import { hash, compare } from '../libs/password';
-import prisma from '../libs/prisma';
-import { env } from '../config/env';
-import { protectedRoute } from '../middleware/auth';
-import type { VariablesHono } from '../config/variables';
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
+import { sign } from 'hono/jwt';
+
+import { z } from 'zod';
+
+import { zValidator } from '@hono/zod-validator';
+
+import { env } from '../config/env';
 import { BlackListedTokenCounter } from '../config/prometheus';
+import type { VariablesHono } from '../config/variables';
+import { compare, hash } from '../libs/password';
+import prisma from '../libs/prisma';
+import { protectedRoute } from '../middleware/auth';
 
 export const authRoutes = new Hono<{ Variables: VariablesHono }>();
 

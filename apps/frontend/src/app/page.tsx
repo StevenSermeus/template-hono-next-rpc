@@ -1,9 +1,12 @@
 'use client';
+
+import { Suspense, useRef } from 'react';
+
+import Image from 'next/image';
+
 import { api } from '@/api';
 import AuthProvider from '@/providers/auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
-import { Suspense, useRef } from 'react';
 
 export default function Home() {
   const emailRef = useRef<HTMLInputElement>(null);

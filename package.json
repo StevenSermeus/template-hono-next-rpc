@@ -16,7 +16,7 @@
     "clean": "rm bun.lockb && rm -rf node_modules && bun install",
     "postinstall": "husky init",
     "prepare": "husky",
-    "pre-commit": "bun --filter '*' lint && bun --filter '*' format",
+    "precommit": "bun --filter '*' lint && bun --filter '*' format",
     "backend": "bun --filter 'backend' start"
   },
   "workspaces": [
